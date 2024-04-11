@@ -15,8 +15,9 @@ namespace Jose_ST10376126_PROG6221_POE
             this.numberOfIngridient = quantityIngridients;
 
             steps = new string[numOfSteps][];
-            this.stepNumber = numOfSteps;
+            this.stepsNumber = numOfSteps;
         }
+        public Recipe() { }
         //--------------------------------------------------------------//
         ////
         public int numberOfIngridient { get; set; }
@@ -24,19 +25,18 @@ namespace Jose_ST10376126_PROG6221_POE
         public int quantity { get; set; }
         public string unitOfMeasurement { get; set; }
         public string description { get; set; }
-        public int stepNumber { get; set; }
+        public int stepsNumber { get; set; }
         public string[][] ingridents { get; set; }
         public string[][] steps { get; set; }
-        private double factor;
+        double factor;
+        List<double> ogQuantityValues { get; set; }
+
         //--------------------------------------------------------------//
 
         //-------------------------------
         public void enterIngridients()
         {
-            Console.Write("Enter que quantity of ingridients - ");
-            numberOfIngridient = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 1; i <= numberOfIngridient; i++)
+            for (int i = 0; i < numberOfIngridient; i++)
             {
                 Console.WriteLine("------------------------");
                 Console.Write("\nIngrident ", numberOfIngridient);
@@ -49,20 +49,17 @@ namespace Jose_ST10376126_PROG6221_POE
 
                 Console.Write("\nEnter quantity of ingrident - ");
                 quantity = Convert.ToInt32(Console.ReadLine());
+                ogQuantityValues.Add(quantity);
+
                 // Name - Quantity - Unit of Measurement
                 ingridents[i] = new string[] { name, Convert.ToString(quantity), unitOfMeasurement };
+                
             }
-
-
         }
         //--------------------------------
         public void enterSteps()
         {
-
-            Console.Write("Enter the number of steps - ");
-            stepNumber = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 1; i <= stepNumber; i++)
+            for (int i = 0; i < stepsNumber; i++)
             {
                 Console.WriteLine("------------------------");
                 Console.Write("\n Step ", i);
@@ -70,10 +67,11 @@ namespace Jose_ST10376126_PROG6221_POE
                 Console.Write("\nEnter description - ");
                 description = Console.ReadLine();
 
-                steps[i] = new string[] { Convert.ToString(stepNumber), description };
+                steps[i] = new string[] { Convert.ToString(i+1), description };
+               
             }
-
         }
+        //--------------------------------
         public void printIngridients()
         {
             Console.WriteLine("Recipe");
@@ -83,6 +81,7 @@ namespace Jose_ST10376126_PROG6221_POE
             Console.WriteLine("| Name | Quantity | Unit of Measurement |\n");
             foreach (var rows in ingridents)
             {
+                
                 foreach (var item in rows)
                 {
                     Console.Write("" + item + " | ");
@@ -91,6 +90,7 @@ namespace Jose_ST10376126_PROG6221_POE
 
             }
         }
+        //--------------------------------
         public void printSteps()
         {
             Console.WriteLine("-------------------------------------------");
@@ -119,13 +119,17 @@ namespace Jose_ST10376126_PROG6221_POE
             switch (option)
             {
                 case 1:
-                    factor = 0.5; break;
+                    factor = 0.5; 
+                    break;
                 case 2:
-                    factor = 2; break;
+                    factor = 2; 
+                    break;
                 case 3:
-                    factor = 3; break;
+                    factor = 3; 
+                    break;
                 default:
-                    factor = 1; break;
+                    factor = 1; 
+                    break;
             }
 
             int row = 0, col = 0;
@@ -146,24 +150,20 @@ namespace Jose_ST10376126_PROG6221_POE
                 col = 0;
 
             }
-
-
-
-
+          
         }
         //--------------------------------
         public void resetQuantity()
         {
-            int row = 0, col = 0;
+            int row = 0, col = 0;  
             foreach (var rows in ingridents)
             {
 
                 foreach (var item in rows)
                 {
-                    if (double.TryParse(item, out double itemToNum))
+                    if (double.TryParse(item, out double dummy))
                     {
-                        itemToNum = itemToNum / factor;
-                        ingridents[row][col] = Convert.ToString(itemToNum);
+                        ingridents[row][col] = Convert.ToString(ogQuantityValues[row]);
 
                     }
                     col++;
@@ -176,8 +176,68 @@ namespace Jose_ST10376126_PROG6221_POE
         public void clearData()
         {
             ingridents = new string[numberOfIngridient][];
-            steps = new string[stepNumber][];
+            steps = new string[stepsNumber][];
             Console.WriteLine("Data was seccusfully cleared!");
+        }
+        //--------------------------------
+        public void TestRecipe()
+        {
+            int option = 0;
+            setArrayaSize();
+            enterIngridients();
+            enterSteps();
+            while (true)
+            {
+                Console.WriteLine("-----------------------------------------------");
+                Console.Write("Choose the operatio you'd like to do" +
+                    "\n1-Print the Recipe" +
+                    "\n2-Scale quantity of ingridients" +
+                    "\n3-Rest values to original ones"+
+                    "\n4-Clear all data\n5-Stop program\n - ");
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        printIngridients();
+                        printSteps();
+                        break;
+                    case 2:
+                        scale();
+                        printIngridients();
+                        break;
+                    case 3:
+                        resetQuantity();
+                        break;
+                    case 4:
+                        clearData();
+                        setArrayaSize();
+                        enterIngridients();
+                        enterSteps();
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        break;
+
+                }
+            Console.ReadLine();
+            }
+            
+        }
+
+        //--------------------------------
+        public void setArrayaSize()
+        {
+            Console.Write("Enter quantity of ingridients - ");
+            numberOfIngridient = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\nEnter quantity of  steps - ");
+            stepsNumber = Convert.ToInt32(Console.ReadLine());
+
+            ingridents = new string[numberOfIngridient][];
+            steps = new string[stepsNumber][];
+            ogQuantityValues = new List<double> { };
+           
         }
     }
 }
