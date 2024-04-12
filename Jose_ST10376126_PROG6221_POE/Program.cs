@@ -1,9 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿/*Name: Jose Lubota
+ * Student Number: ST10376126
+ * Course BCAD
+ * Group: 2
+ * Module: PROG6221
+ */
+
+using System;
+
 
 namespace Jose_ST10376126_PROG6221_POE
 {
