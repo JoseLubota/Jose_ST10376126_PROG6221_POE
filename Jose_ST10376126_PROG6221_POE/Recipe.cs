@@ -1,8 +1,11 @@
-﻿using System;
+﻿/* Jose Lubota
+ * Student Number: ST10376126
+ * Group: 2
+ * References:
+ *          
+ */
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Jose_ST10376126_PROG6221_POE
@@ -139,15 +142,20 @@ namespace Jose_ST10376126_PROG6221_POE
             Console.WriteLine("Ingridients\n");
             // Name - Quantity - Unit of Measurement
             Console.WriteLine("| Name | Quantity | Unit of Measurement |\n");
+            
             foreach (var rows in ingridients)
             {
-
+                int col = 0;
                 foreach (var item in rows)
                 {
+                    changeColor(col);
                     Console.Write("" + item + " | ");
+                    col++;
                 }
+                // Set text color to white
                 Console.WriteLine(" ");
-
+                changeColor(10);
+            
             }
         }
         //----------------------------------------------------------------------------------------------------------------
@@ -162,11 +170,14 @@ namespace Jose_ST10376126_PROG6221_POE
             foreach (var rows in steps)
             {
                 var row = rows;
+                int col = 0;
                 foreach (var item in row)
                 {
+                    changeColor(col);
                     Console.Write("" + item + " | ");
+                    col++;
                 }
-                Console.WriteLine(" ");
+                changeColor(10);
 
             }
             Console.WriteLine("-------------------------------------------");
@@ -237,7 +248,7 @@ namespace Jose_ST10376126_PROG6221_POE
                 foreach (var item in rows)
                 {
                     if (double.TryParse(item, out double dummy))
-                    {
+                    { 
                         ingridients[row][col] = Convert.ToString(ogQuantityValues[row]);
                         ingridients[row][col + 1] = ogUnitOfMeasurement[row];
 
@@ -308,6 +319,28 @@ namespace Jose_ST10376126_PROG6221_POE
 
             }
 
+        }
+        
+        //----------------------------------------------------------------------------------------------------------------
+        // Change the default color's of printed values.
+        public void changeColor(int column)
+        {
+            if(column == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+
+            }else if(column == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if(column == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }
