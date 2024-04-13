@@ -138,11 +138,18 @@ namespace Jose_ST10376126_PROG6221_POE
         public void printIngridients()
         {
             Console.WriteLine("Recipe");
+            changeColor(3);
             Console.WriteLine("-------------------------------------------\n");
             Console.WriteLine("Ingridients\n");
+            changeColor(30);
             // Name - Quantity - Unit of Measurement
-            Console.WriteLine("| Name | Quantity | Unit of Measurement |\n");
-            
+            changeColor(0);
+            Console.Write("| Name |");
+            changeColor(1);
+            Console.Write(" Quantity |");
+            changeColor(2);
+            Console.Write("Unit of Measurement |\n");
+
             foreach (var rows in ingridients)
             {
                 int col = 0;
@@ -162,11 +169,16 @@ namespace Jose_ST10376126_PROG6221_POE
         //Print the steps
         public void printSteps()
         {
+            changeColor(3);
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine("Steps\n");
+            changeColor(10);
 
             // Step number - Descrition
-            Console.WriteLine("| Step | Description |\n");
+            changeColor(0);
+            Console.Write("| Step |");
+            changeColor(1);
+            Console.WriteLine(" Description |\n");
             foreach (var rows in steps)
             {
                 var row = rows;
@@ -178,6 +190,7 @@ namespace Jose_ST10376126_PROG6221_POE
                     col++;
                 }
                 changeColor(10);
+                Console.WriteLine(" ");
 
             }
             Console.WriteLine("-------------------------------------------");
@@ -196,7 +209,9 @@ namespace Jose_ST10376126_PROG6221_POE
             enterSteps();
             while (true)
             {
+                changeColor(3);
                 Console.WriteLine("-----------------------------------------------");
+                changeColor(10);
                 Console.Write("Choose the operatio you'd like to do" +
                     "\n1-Print the Recipe" +
                     "\n2-Scale quantity of ingridients" +
@@ -336,6 +351,9 @@ namespace Jose_ST10376126_PROG6221_POE
             else if(column == 2)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
+            }else if(column == 3)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow ;
             }
             else
             {
