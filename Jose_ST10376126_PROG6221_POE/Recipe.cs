@@ -2,6 +2,10 @@
  * Student Number: ST10376126
  * Group: 2
  * References:
+ *          https://www.geeksforgeeks.org/c-sharp-how-to-change-foreground-color-of-text-in-console/
+ *          https://www.w3schools.blog/c-sharp-list
+ *          https://www.w3schools.com/cs/cs_arrays_loop.php
+ *          
  *          
  */
 using System;
