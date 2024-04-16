@@ -6,8 +6,12 @@ This project focuses on the creation of a recipe class using object-oriented-pro
 
 #  How to run the project
 
+Requirements: Microsoft Visual Studio.
+
 The repository: https://github.com/JoseLubota/Jose_ST10376126_PROG6221_POE
-To run the software go to the following coordinates: Jose_ST10376126_PROG6221_POE(folder) -> Jose_ST10376126_PROG6221_POE(folder) and run the following file: Program.cs
+
+Open the project solution through Visual Studio and to run the software go to the following coordinates: Jose_ST10376126_PROG6221_POE(folder) -> Jose_ST10376126_PROG6221_POE(folder) and run the following file: Program.cs.
+
 
 #  References:
     https://www.geeksforgeeks.org/c-sharp-how-to-change-foreground-color-of-text-in-console
