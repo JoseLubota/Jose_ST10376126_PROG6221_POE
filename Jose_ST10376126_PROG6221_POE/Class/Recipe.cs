@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Jose_ST10376126_PROG6221_POE
+namespace Jose_ST10376126_PROG6221_POE.Class
 {
     // Creating a class that represents a recipe
     public class Recipe
@@ -21,38 +21,39 @@ namespace Jose_ST10376126_PROG6221_POE
         public Recipe() { }
         //--------------------------------------------------------------//
         //................................. Variables/List/Arrays belonging to Recipe class
+        //
+        List<Recipe> recipes { get; set; }
         // Indicates the number of ingrients in the recipe
         public int numberOfIngridient { get; set; }
         // Ingridient's name
         public string name { get; set; }
+        // Ingridient's name
+        public string foodGroup { get; set; }
         // Ingridient's quantity
-        public int quantity { get; set; }
+        public double quantity { get; set; }
+        // Ingridient's quantity
+        public int calories { get; set; } 
         // Unit of measurement (tablespoon, cup, etc.) for ingridients
         public string unitOfMeasurement { get; set; }
-        // Step's description
-        public string description { get; set; }
-        // Number of steps the recipe will have
-        public int stepsNumber { get; set; }
-        
-        // Arrey to store ingridients
-        public string[][] ingridients { get; set; }
-        
-        // Arrey to store steps
-        public string[][] steps { get; set; }
+        List<Ingridient> recipeIngridient { get; set; }
+        // Arry to store steps
+        List<Steps> recipeSteps { get; set; }
         // Array to store ingridients
         double factor;
         // List to store original values of quantity
         List<double> ogQuantityValues { get; set; }
         // List to store original values of quantity
         List<string> ogUnitOfMeasurement { get; set; }
+        public int stepsNumber { get; set; }
+        public string recipeName { get; set; }
+
 
 
 
         //.......................................................Methods..................................................//
 
-        //.............................................Input Methods..................................................//
-
-
+        //.............................................Input Methods........................................ ..........//
+        //
         // Allows user to enter ingridients
         public void enterIngridients()
         {
@@ -60,6 +61,7 @@ namespace Jose_ST10376126_PROG6221_POE
             {
                 for (int i = 0; i < numberOfIngridient; i++)
                 {
+                    Ingridient.CaloriesExceeded += Ingridient.Ingridient_CaloriesExceeded;
                     Console.WriteLine("------------------------");
                     Console.Write("\nIngrident ", numberOfIngridient);
 
@@ -68,15 +70,21 @@ namespace Jose_ST10376126_PROG6221_POE
 
                     Console.Write("\nEnter unit of measuremnt  - ");
                     unitOfMeasurement = Console.ReadLine();
-                    ogUnitOfMeasurement.Add(unitOfMeasurement);   
+                    ogUnitOfMeasurement.Add(unitOfMeasurement); 
 
                     Console.Write("\nEnter quantity of ingrident - ");
-                    quantity = Convert.ToInt32(Console.ReadLine());
+                    quantity = Convert.ToDouble(Console.ReadLine());
                     ogQuantityValues.Add(quantity);
 
-                    // Name - Quantity - Unit of Measurement
-                    ingridients[i] = new string[] { name, Convert.ToString(quantity), unitOfMeasurement };
+                    Console.Write("\nEnter the food group - ");
+                    foodGroup = Console.ReadLine();
 
+                    Console.Write("\nEnter the quantity of calories - ");
+                    calories = Convert.ToInt32(Console.ReadLine());
+
+                    // Name - Quantity - Unit of Measurement
+                    Ingridient ingridient = new Ingridient(recipeName, name, quantity, unitOfMeasurement, foodGroup, calories);
+                    recipeIngridient.Add(ingridient);
                 }
 
             }
@@ -88,23 +96,21 @@ namespace Jose_ST10376126_PROG6221_POE
             }
 
         }
-        
+
         //----------------------------------------------------------------------------------------------------------------
         //Allows user to enter steps
-        public void enterSteps()
+        public void enterSteps() 
         {
             try
             {
                 for (int i = 0; i < stepsNumber; i++)
                 {
                     Console.WriteLine("------------------------");
-                    Console.Write("\n Step ", i);
-
+                    Console.Write("\n Step " + i+1);
                     Console.Write("\nEnter description - ");
-                    description = Console.ReadLine();
-
-                    steps[i] = new string[] { Convert.ToString(i + 1), description };
-
+                    string description = Console.ReadLine();
+                    Steps step = new Steps(recipeName, description, i);
+                    recipeSteps.Add(step);
                 }
 
             }
@@ -116,21 +122,27 @@ namespace Jose_ST10376126_PROG6221_POE
             }
 
         }
-        
+
         //----------------------------------------------------------------------------------------------------------------
         // Create input for user to set ingridients and steps size
-        public void setArrayaSize()
+        public void initialize()
         {
-            Console.Write("Enter quantity of ingridients - ");
+            Console.WriteLine("Enter the recipe name - ");
+            recipeName = Console.ReadLine();
+
+            Console.Write("\nEnter quantity of ingridients - ");
             numberOfIngridient = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("\nEnter quantity of  steps - ");
             stepsNumber = Convert.ToInt32(Console.ReadLine());
 
-            ingridients = new string[numberOfIngridient][];
-            steps = new string[stepsNumber][];
             ogQuantityValues = new List<double> { };
             ogUnitOfMeasurement = new List<string> { };
+        }
+        public void initializeLists()
+        {
+            recipeIngridient = new List<Ingridient> { };
+            recipeSteps = new List<Steps> { };
         }
 
 
@@ -140,7 +152,7 @@ namespace Jose_ST10376126_PROG6221_POE
         // Print the ingridients
         public void printIngridients()
         {
-            Console.WriteLine("Recipe");
+            Console.WriteLine("Recipe: " + recipeName);
             changeColor(3);
             Console.WriteLine("-------------------------------------------\n");
             Console.WriteLine("Ingridients\n");
@@ -151,21 +163,28 @@ namespace Jose_ST10376126_PROG6221_POE
             changeColor(1);
             Console.Write(" Quantity |");
             changeColor(2);
-            Console.Write("Unit of Measurement |\n");
+            Console.Write(" Unit of Measurement |");
+            changeColor(1);
+            Console.Write(" Food group |");
+            changeColor(2);
+            Console.Write(" Calories |\n");
 
-            foreach (var rows in ingridients)
+            foreach (var ingridient in recipeIngridient)
             {
-                int col = 0;
-                foreach (var item in rows)
-                {
-                    changeColor(col);
-                    Console.Write("" + item + " | ");
-                    col++;
-                }
+                changeColor(0);
+                Console.Write(ingridient.name + "   ");
+                changeColor(1);
+                Console.Write(ingridient.quantity + "   ");
+                changeColor(2);
+                Console.Write(ingridient.unitOfMeasurement + "   ");
+                changeColor(1);
+                Console.Write(ingridient.foodGroup + "   ");
+                changeColor(2);
+                Console.Write(ingridient.calories + "   ");
                 // Set text color to white
                 Console.WriteLine(" ");
                 changeColor(10);
-            
+
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------
@@ -174,7 +193,7 @@ namespace Jose_ST10376126_PROG6221_POE
         {
             changeColor(3);
             Console.WriteLine("-------------------------------------------");
-            Console.WriteLine("Steps\n");
+            Console.WriteLine("Steps of recipe:" + recipeName + "\n");
             changeColor(10);
 
             // Step number - Descrition
@@ -182,32 +201,28 @@ namespace Jose_ST10376126_PROG6221_POE
             Console.Write("| Step |");
             changeColor(1);
             Console.WriteLine(" Description |\n");
-            foreach (var rows in steps)
+            foreach (var step in recipeSteps)
             {
-                var row = rows;
-                int col = 0;
-                foreach (var item in row)
-                {
-                    changeColor(col);
-                    Console.Write("" + item + " | ");
-                    col++;
-                }
-                changeColor(10);
-                Console.WriteLine(" ");
+                changeColor(0);
+                Console.Write(step.stepNumber);
+                changeColor(1);
+                Console.WriteLine(step.description);
 
             }
             Console.WriteLine("-------------------------------------------");
+            changeColor(10);
         }
 
 
-        
+
         //.................................,,,,,,,,,,,,...........Mixed Methods...................................................//
         //----------------------------------------------------------------------------------------------------------------------------
         // Create a loop to test all modules
         public void TestRecipe()
         {
             int option = 0;
-            setArrayaSize();
+            initializeLists();
+            initialize();
             enterIngridients();
             enterSteps();
             while (true)
@@ -219,7 +234,8 @@ namespace Jose_ST10376126_PROG6221_POE
                     "\n1-Print the Recipe" +
                     "\n2-Scale quantity of ingridients" +
                     "\n3-Rest values to original ones" +
-                    "\n4-Clear all data\n5-Stop program\n - ");
+                    "\n4-Add a new recipe" +
+                    "\n5-Clear all data\n6-Stop program\n - ");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -235,12 +251,18 @@ namespace Jose_ST10376126_PROG6221_POE
                         resetQuantity();
                         break;
                     case 4:
-                        clearData();
-                        setArrayaSize();
+                        initialize();
                         enterIngridients();
                         enterSteps();
                         break;
                     case 5:
+                        clearData();
+                        initializeLists();
+                        initialize();
+                        enterIngridients();
+                        enterSteps();
+                        break;
+                    case 6:
                         return;
                     default:
                         break;
@@ -252,37 +274,28 @@ namespace Jose_ST10376126_PROG6221_POE
         }
 
 
-   
+
         //...................................................Operative Methods........................................................//
         //----------------------------------------------------------------------------------------------------------------
         //  Reset the ingridient quantity to their first values
         public void resetQuantity()
         {
-            int row = 0, col = 0;
-            foreach (var rows in ingridients)
+            int row = 0;
+            foreach (var ingridient in recipeIngridient)
             {
-
-                foreach (var item in rows)
-                {
-                    if (double.TryParse(item, out double dummy))
-                    { 
-                        ingridients[row][col] = Convert.ToString(ogQuantityValues[row]);
-                        ingridients[row][col + 1] = ogUnitOfMeasurement[row];
-
-
-                    }
-                    col++;
-                }
+                ingridient.quantity = ogQuantityValues[row];
+                ingridient.unitOfMeasurement = ogUnitOfMeasurement[row];
                 row += 1;
-                col = 0;
             }
+
+
         }
         //---------------------------------------------------------------------------------------------------------------------------
         // Clear ingridients and steps array
         public void clearData()
         {
-            ingridients = new string[numberOfIngridient][];
-            steps = new string[stepsNumber][];
+            recipeSteps.Clear();
+            recipeIngridient.Clear();
             Console.WriteLine("Data was seccusfully cleared!");
         }
         //----------------------------------------------------------------------------------------------------------------------------
@@ -307,61 +320,51 @@ namespace Jose_ST10376126_PROG6221_POE
                     factor = 1;
                     break;
             }
-
-            int row = 0, col = 0;
-            foreach (var rows in ingridients)
+            foreach (var ingridient in recipeIngridient)
             {
-
-                foreach (var item in rows)
+                double newQuantity = Convert.ToInt32(ingridient.quantity) * factor;
+                if (newQuantity >= 16)
                 {
-                    if (double.TryParse(item, out double itemToNum))
+                    newQuantity = newQuantity / 16;
+                    if (ingridient.unitOfMeasurement == "tablespoon")
                     {
-                        
-                        itemToNum = itemToNum * factor;
-                        if (itemToNum >= 16)
-                        {
-                            itemToNum = itemToNum / 16;
-                            if (ingridients[row][col+1] == "tablespoon")
-                            {
-                               ingridients[row][col + 1] = "Cup";
-                            }
-                        }
-                        ingridients[row][col] = Convert.ToString(itemToNum);
-
+                        ingridient.unitOfMeasurement = "Cup";
                     }
-                    col++;
                 }
-                row += 1;
-                col = 0;
+                ingridient.quantity = newQuantity;
 
             }
-
         }
-        
+
         //----------------------------------------------------------------------------------------------------------------------------
         // Change the default color's of printed values.
         public void changeColor(int column)
         {
-            if(column == 0)
+            if (column == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
 
-            }else if(column == 1)
+            }
+            else if (column == 1)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
             }
-            else if(column == 2)
+            else if (column == 2)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-            }else if(column == 3)
+            }
+            else if (column == 3)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow ;
+                Console.ForegroundColor = ConsoleColor.Yellow;
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
+        //----------------------------------------------------------------------------------------------------------------------------
+        // 
     }
 }
+
 //-----------------------------------------------... END OF THE FILE...--------------------------------------------------------------//

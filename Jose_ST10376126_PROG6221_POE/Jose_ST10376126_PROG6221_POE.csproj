@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7439F6FE-967C-42C1-A104-2B04618FD6FE}</ProjectGuid>
+    <ProjectGuid>{62EA5D08-39D1-42FD-A20C-06D08F230D8B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Jose_ST10376126_PROG6221_POE</RootNamespace>
     <AssemblyName>Jose_ST10376126_PROG6221_POE</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -43,15 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Recipe.cs" />
+    <Compile Include="Class\Ingridient.cs" />
+    <Compile Include="Class\Recipe.cs" />
+    <Compile Include="Class\Steps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Class\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
