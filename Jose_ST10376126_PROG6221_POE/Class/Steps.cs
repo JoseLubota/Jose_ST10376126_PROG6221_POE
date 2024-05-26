@@ -13,7 +13,7 @@ namespace Jose_ST10376126_PROG6221_POE.Class
         // Number of steps the recipe will have
         public int stepNumber { get; set; }
         // Number of steps the recipe will have
-        string recipeName { get; set; }
+        public string recipeName { get; set; }
         public Steps(string recipeName, string description, int stepNumber)
         {
             this.recipeName = recipeName;
