@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace Jose_ST10376126_PROG6221_POE.Class
 {
-    public class Steps
+//....................................................................................................................
+    //Class Step
+    public class Steps : Recipe
     {
-        // Step's description
-        public string description { get; set; }
-        // Number of steps the recipe will have
-        public int stepNumber { get; set; }
-        // Number of steps the recipe will have
-        public string recipeName { get; set; }
-        public Steps(string recipeName, string description, int stepNumber)
+//.........................................................................................................................
+        //Class Constructor
+        public Steps(string recipeName, string description, double stepNumber)
         {
             this.recipeName = recipeName;
-            this.description = description;
+            this.stepDescription = description;
             this.stepNumber = stepNumber;
         } 
     }
     
 }
+//...........................................END OF FILE..................................................................................

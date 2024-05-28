@@ -6,21 +6,20 @@ using System.Threading.Tasks;
 
 namespace Jose_ST10376126_PROG6221_POE.Class
 {
+//..................................................................................................................    
+    // Delegate for handling caliries exceeded event
     public delegate void CaloriesEventHandler(object sender, EventArgs e);
-    public class Ingridient
+
+    // Ingridient class
+    public class Ingridient : Recipe
     {
-        // Ingridient's name
-        public string name { get; set; }
-        // Ingridient's quantity
-        public double quantity { get; set; }
-        // Unit of measurement (tablespoon, cup, etc.) for ingridients
-        public string unitOfMeasurement { get; set; }
-        //
+//.......................................................................................................................................................................    
+//................................. Variables/List/Arrays belonging to Recipe class.........................................................................
+
+        // Ingridient calories
         private double _calories {  get; set; } 
-        //
-        public string foodGroup { get; set; }
-        public string recipeName { get; set; }
-        //
+
+        // Checking calories to trigger the delegate if a condition is met
         public double calories
         {
             get => _calories;
@@ -38,11 +37,13 @@ namespace Jose_ST10376126_PROG6221_POE.Class
                 }
             }
         }
-        //
+        
+        // Event to handle calories exceeded
         public static event CaloriesEventHandler CaloriesExceeded;
 
-
-
+//...................................................................................................................................................    
+        
+        //Class Contructor
         public Ingridient(string recipeName, string name, double quantity, string measurement, string foodGroup, double calories)
         {
             this.recipeName = recipeName;
@@ -51,21 +52,17 @@ namespace Jose_ST10376126_PROG6221_POE.Class
             unitOfMeasurement = measurement;
             this.foodGroup = foodGroup;
             this.calories = calories;
-            //Check if total calories exceed 300 and raise the event
-            /*
-            if (totalCalories > 300)
-            {
-                OnCaloriesExceeded(EventArgs.Empty);
-
-            } */
         }
         public Ingridient() { }
-        //
+//....................................................................................................................................................................................    
+//.......................................................Methods......................................................................................................................................................//
+
+        // Method to trigger the CaloriesExceeded event
         protected virtual void OnCaloriesExceeded(EventArgs e)
         {
             CaloriesExceeded?.Invoke(this, e);
         }
-        //
+        // Event  handler for cCaloriesExceeded event
         public static void Ingridient_CaloriesExceeded(object sender, EventArgs e)
         {
            Console.ForegroundColor = ConsoleColor.Red;
@@ -75,7 +72,7 @@ namespace Jose_ST10376126_PROG6221_POE.Class
            
            Console.ForegroundColor = ConsoleColor.White;
         }
-
+        // Check current calories value and print a meaning
         public void provideCaloriesMeaning() 
         {
             Console.WriteLine("Meaning of the calories quantity\n");
@@ -118,10 +115,7 @@ namespace Jose_ST10376126_PROG6221_POE.Class
                 Console.WriteLine("Current calories: " + calories + "\nSmall snacks like an apple, orange,etc.");
             }
         }    
-        public bool checkCalories()
-        {
-
-            return true;
-        }
+        
     }
 }
+//...........................................END OF FILE..................................................................................
