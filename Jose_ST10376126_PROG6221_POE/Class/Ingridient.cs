@@ -1,9 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/* Jose Lubota
+ * Student Number: ST10376126
+ * Group: 2
+ * References:
+ *          https://www.w3schools.blog/c-sharp-list
+ *          https://www.w3schools.com/cs/cs_arrays_loop.php
+ *          https://web-p-ebscohost-com.ezproxy.iielearn.ac.za/ehost/ebookviewer/ebook/bmxlYmtfXzI5MTc3MDFfX0FO0?sid=f5055d80-d4b0-4010-9877-c1a2d34945af@redis&vid=0&format=EB&lpid=lp_xlv&rid=0     
+ *          https://sweetlife.org.za/how-much-to-eat-to-lose-weight/
+ *          https://learn.microsoft.com/en-us/dotnet/api/system.eventhandler?view=net-8.0
+ *          https://www.c-sharpcorner.com/article/event-handling-in-net-using-C-Sharp/
+ */
+using System;
 namespace Jose_ST10376126_PROG6221_POE.Class
 {
 //..................................................................................................................    

@@ -1,7 +1,14 @@
-﻿using Jose_ST10376126_PROG6221_POE.Class;
+﻿/* Jose Lubota
+ * Student Number: ST10376126
+ * Group: 2
+ * References:
+ *          https://www.w3schools.blog/c-sharp-list
+ *          https://web-p-ebscohost-com.ezproxy.iielearn.ac.za/ehost/ebookviewer/ebook/bmxlYmtfXzI5MTc3MDFfX0FO0?sid=f5055d80-d4b0-4010-9877-c1a2d34945af@redis&vid=0&format=EB&lpid=lp_xlv&rid=0     
+ *          https://sweetlife.org.za/how-much-to-eat-to-lose-weight/
+ *          https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
+ */
+using Jose_ST10376126_PROG6221_POE.Class;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
 namespace JoseST10376126_PROG221_POE.UnitTests
 {
     [TestClass]
@@ -43,3 +50,4 @@ namespace JoseST10376126_PROG221_POE.UnitTests
         }
     }
 }
+//...........................................END OF FILE..................................................................................
