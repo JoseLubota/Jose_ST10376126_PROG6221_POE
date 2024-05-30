@@ -9,10 +9,11 @@
  *          https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/exceptions/exception-handling
  *          https://learn.microsoft.com/en-us/dotnet/api/system.formatexception?view=net-8.0
  *          https://sweetlife.org.za/how-much-to-eat-to-lose-weight/
+ *          https://learn.microsoft.com/en-us/dotnet/api/system.eventhandler?view=net-8.0
+ *          https://www.c-sharpcorner.com/article/event-handling-in-net-using-C-Sharp/
  */
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 
 namespace Jose_ST10376126_PROG6221_POE.Class
@@ -392,9 +393,9 @@ namespace Jose_ST10376126_PROG6221_POE.Class
                 try
                 {
                     result = double.Parse(input);
-                    if (result <= 0)
+                    if (result < 0)
                     {
-                        throw new ArgumentException("The number must be grater than 0");
+                        throw new ArgumentException("The number must be greater than 0");
                     }
                     break;
                 }
