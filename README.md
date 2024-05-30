@@ -6,7 +6,7 @@ This project focuses on the creation of a recipe app using object-oriented-progr
 
 #  How to run the project
 
-Requirements: Microsoft Visual Studio, C#. Latest version 
+Requirements: Microsoft Visual Studio, C#. (The Latest version)
 
 The repository: https://github.com/JoseLubota/Jose_ST10376126_PROG6221_POE
 
@@ -39,5 +39,5 @@ https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-t
 
 # Changes made based on feedback 
 
-He identified that my code had a poor implementation of error handling, especially regarding the type of data entered in the variables. To solve this, two methods were written; checkStringInput, a method used to verify if a string variable receives a string that meets some requirements such as it must not be null and must not just be a number, since the app is for recipe management the user should not only enter number in variable that represent descriptions, name, etc. The other one (checkDoubleInput) is that the number must be equal or greater; even if the user enters data different than a number, the error handling will be able to handle it.
+My Lecturer identified that my code had a poor implementation of error handling, especially regarding the type of data entered in the variables. To solve this, two methods were written; checkStringInput, a method used to verify if a string variable receives a string that meets some requirements such as it must not be null and must not just be a number, since the app is for recipe management the user should not only enter number in variable that represent descriptions, name, etc. The other one (checkDoubleInput) is that the number must be equal or greater; even if the user enters data different than a number, the error handling will be able to handle it.
 
