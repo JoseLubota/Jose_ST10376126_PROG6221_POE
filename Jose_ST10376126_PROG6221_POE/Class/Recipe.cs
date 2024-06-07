@@ -395,7 +395,7 @@ namespace Jose_ST10376126_PROG6221_POE.Class
                     result = double.Parse(input);
                     if (result < 0)
                     {
-                        throw new ArgumentException("The number must be greater than 0");
+                        throw new ArgumentException("The number must be equal or greater than 0");
                     }
                     break;
                 }
