@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jose_ST10376126_PROG6221_PO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoseST10376126_PROG221_POE.UnitTests", "JoseST10376126_PROG221_POE.UnitTests\JoseST10376126_PROG221_POE.UnitTests.csproj", "{ED6EE50F-7F4B-4081-8F8D-3E5CCEBD9127}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeAppGUI", "RecipeAppGUI\RecipeAppGUI.csproj", "{AB3B0B93-3D9C-4C8C-93CF-7C08F2F728CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ED6EE50F-7F4B-4081-8F8D-3E5CCEBD9127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED6EE50F-7F4B-4081-8F8D-3E5CCEBD9127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED6EE50F-7F4B-4081-8F8D-3E5CCEBD9127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3B0B93-3D9C-4C8C-93CF-7C08F2F728CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3B0B93-3D9C-4C8C-93CF-7C08F2F728CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3B0B93-3D9C-4C8C-93CF-7C08F2F728CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3B0B93-3D9C-4C8C-93CF-7C08F2F728CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

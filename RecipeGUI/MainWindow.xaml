@@ -1,0 +1,113 @@
+﻿<Window x:Class="RecipeGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecipeGUI"
+        mc:Ignorable="d"
+        Title="Recipe App" Height="600" Width="1000">
+    <Grid Background="WhiteSmoke">
+        <TabControl Name="Menu" Margin="0,10,0,-10">
+            <TabItem Header="Home" RenderTransformOrigin="-6.854,-5.167">
+
+            </TabItem>
+            <!-- First page -->
+            <TabItem Header="Enter Recipe" RenderTransformOrigin="-6.854,-5.167" Height="20" VerticalAlignment="Top">
+                <Border Height="532" Width="936" BorderBrush="LightGray" BorderThickness="3" Background="White">
+
+                    <Canvas Background="DarkGray" Margin="0,0,-3,72">
+                        <StackPanel Canvas.Left="10" Canvas.Top="10" Orientation="Horizontal">
+                            <Label Width="89" Content="Recipe Name " Height="28" FontWeight="Bold"/>
+                            <Border Width="238" Height="24"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox x:Name="RecipeNameInput" Background="White"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Left="10" Canvas.Top="55" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" >
+                            <Label Width="68" Content="Ingridient" Height="28" FontWeight="Bold" />
+                            <Border Width="238" Height="24"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox Name="IngridientInput" />
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Left="10" Canvas.Top="121" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Label Width="130" Content="Unit of Measurement" Height="28" FontWeight="Bold"/>
+                            <Border Width="150" Height="24"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox Name="UnitofMeasurementInput"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Left="10" Canvas.Top="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Label Width="73" Content="Quantity" Height="28" FontWeight="Bold"/>
+                            <Border Width="179" Height="24"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox Name="Quantity"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Left="10" Canvas.Top="200" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Label Width="82" Content="Food Group" Height="28" FontWeight="Bold"/>
+                            <ComboBox Name="FoodGroupList" Width="133">
+                                <ComboBoxItem>Starchy foods</ComboBoxItem>
+                                <ComboBoxItem>Vegetables and fruits</ComboBoxItem>
+                                <ComboBoxItem>Dry beans, peas, lentils and soya</ComboBoxItem>
+                                <ComboBoxItem>Chicken, fish, meat and eggs</ComboBoxItem>
+                                <ComboBoxItem>Milk and dairy products</ComboBoxItem>
+                                <ComboBoxItem>Fats and oil</ComboBoxItem>
+                                <ComboBoxItem>Water</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Left="10" Canvas.Top="240" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Label Width="73" Content="Calories" Height="28" FontWeight="Bold"/>
+                            <Border Width="179" Height="24"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox Name="CaloriesInput"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Right="50" Canvas.Top="10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="498">
+                            <Label Width="91" Content="Step number" Height="28" FontWeight="Bold"/>
+                            <Border Width="179" Height="24"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox Name="StepnumberInput"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Canvas.Right="50" Canvas.Top="50" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Height="205" Canvas.Left="382" Width="501">
+                            <Label Width="91" Content="Description" Height="28" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                            <Border Width="500" Height="180"  BorderBrush="LightGray" BorderThickness="1">
+                                <TextBox Name="DescriptionInput"/>
+                            </Border>
+                        </StackPanel>
+
+                        <Border Canvas.Left="120" Canvas.Top="324" Width="150" Height="40" CornerRadius="15">
+                            <Button Name="AddIngridient" Background="Crimson" Content="Add Ingridient" Foreground="White" FontWeight="Bold" Click="AddRecipeButton_Click"/>
+                        </Border>
+                        <Border Canvas.Right="120" Canvas.Top="324" Width="150" Height="40" CornerRadius="15">
+                            <Button Name="AddSteps" Background="Crimson" Content="Add Step" Foreground="White" FontWeight="Bold" Click="AddStepButton_Click" />
+                        </Border>
+
+
+                    </Canvas>
+                </Border>
+            </TabItem>
+          
+            <!-- Second page -->
+            <TabItem Header="Display Recipe" RenderTransformOrigin="-6.854,-5.167" HorizontalAlignment="Right" Margin="0,-2,-2,0" Width="92">
+                <StackPanel Background="#FFE5E5E5">
+                    <Grid Height="100" Width="666"></Grid>
+
+                </StackPanel>
+            </TabItem>
+            <!-- <Third page -->
+            <TabItem Header="Select" RenderTransformOrigin="-6.854,-5.167">
+                <StackPanel Background="#FFE5E5E5">
+
+                </StackPanel>
+            </TabItem>
+
+
+
+
+        </TabControl>
+
+    </Grid>
+</Window>

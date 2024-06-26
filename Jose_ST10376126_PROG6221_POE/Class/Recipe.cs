@@ -24,7 +24,11 @@ namespace Jose_ST10376126_PROG6221_POE.Class
 //..................................................................................................................
 
         // Class Contructor
-        public Recipe() { }
+        public Recipe() 
+        {
+            recipeIngridient = new List<Ingridient>();
+            recipeSteps = new List<Steps>();
+        }
 //................................. Variables/List/Arrays belonging to Recipe class................................................
         public string recipeName { get; set; }
 //.................................Ingridient Variables.......................................................................      
