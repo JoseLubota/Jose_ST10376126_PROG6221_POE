@@ -135,29 +135,45 @@ namespace RecipeAppGUI
         //Get a field input filter and return a recipe 
         private void SearchRecipe_IngredientName_Button_Click(object sender, RoutedEventArgs e)
         {
+            string message ="";
+            string message2 = "";
             string ingridientName = RecipeNameSearch.Text;
+            string recipeName = "";
             foreach (var recipe in recipes)
             {
                 foreach (var ingridient in recipe.recipeIngridient)
                 {
                     if (ingridient.name.Equals(ingridientName))
                     {
-                        string message = $"Recipe Name: {ingridient.recipeName}, " +
+                        recipeName = ingridient.recipeName;
+                        message = $"Recipe Name: {ingridient.recipeName}, " +
                             $"\nIngridient: {ingridient.name}, " +
                             $"\nUnit of Measurement: {ingridient.unitOfMeasurement}, " +
                             $"\nQuantity: {ingridient.quantity}" +
                             $"\nCalories: {ingridient.calories}";
-                        MessageBox.Show(message, "Ingridients");
+                        
                     }
                 }
+                foreach(var step in recipe.recipeSteps)
+                {
+                    if (step.recipeName.Equals(recipeName))
+                    {
+                        message2 = $"\n\nStep Number: {step.stepNumber}" +
+                            $"\n\nDescription: {step.stepDescription}";
 
-
+                    }
+                }
             }
+            string message3 = message + message2;
+            MessageBox.Show(message3, "Recipe");
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         // Get a field input filter and return a recipe 
         private void SearchRecipe_Calories_Button_Click(object sender, RoutedEventArgs e)
         {
+            string message = "";
+            string message2 = "";
+            string recipeName = "";
             double calories = Convert.ToDouble(CaloriesSearch.Text);
             foreach (var recipe in recipes)
             {
@@ -165,22 +181,35 @@ namespace RecipeAppGUI
                 {
                     if (ingridient.calories <= calories)
                     {
-                        string message = $"Recipe Name: {ingridient.recipeName}, " +
+                        recipeName = ingridient.recipeName;
+                        message = $"Recipe Name: {ingridient.recipeName}, " +
                             $"\nIngridient: {ingridient.name}, " +
                             $"\nUnit of Measurement: {ingridient.unitOfMeasurement}, " +
                             $"\nQuantity: {ingridient.quantity}" +
                             $"\nCalories: {ingridient.calories}";
-                        MessageBox.Show(message, "Ingridients");
+
+                        foreach (var step in recipe.recipeSteps)
+                        {
+                            if (step.recipeName.Equals(recipeName))
+                            {
+                                message2 = $"\n\nStep Number: {step.stepNumber}" +
+                                    $"\n\nDescription: {step.stepDescription}";
+
+                            }
+                        }
+                        string message3 = message + message2;
+                        MessageBox.Show(message3, "Recipe");
                     }
-
                 }
-
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //Get a field input filter and return a recipe 
         private void SearchRecipe_FoodGroup_Button_Click(object sender, RoutedEventArgs e)
         {
+            string message = "";
+            string message2 = "";
+            string recipeName = "";
             ComboBoxItem selectedItem = (ComboBoxItem)FoodGroupSearch.SelectedItem;
             if (selectedItem != null)
             {
@@ -191,13 +220,25 @@ namespace RecipeAppGUI
                     {
                         if (ingridient.foodGroup != null && ingridient.foodGroup.Equals(foodGroup))
                         {
-                            string message = $"Recipe Name: {ingridient.recipeName}, " +
+                            message = $"Recipe Name: {ingridient.recipeName}, " +
                             $"\nIngridient: {ingridient.name}, " +
                             $"\nUnit of Measurement: {ingridient.unitOfMeasurement}, " +
                             $"\nQuantity: {ingridient.quantity}," +
                             $"\nFood Group: {ingridient.foodGroup}" +
                             $"\nCalories: {ingridient.calories}";
-                            MessageBox.Show(message, "Ingridients");
+
+                            foreach (var step in recipe.recipeSteps)
+                            {
+                                if (step.recipeName.Equals(recipeName))
+                                {
+                                    message2 = $"\n\nStep Number: {step.stepNumber}" +
+                                        $"\n\nDescription: {step.stepDescription}";
+
+                                }
+                            }
+                            string message3 = message + message2;
+                            MessageBox.Show(message3, "Recipe");
+
                         }
 
                     }
