@@ -18,15 +18,14 @@ using Microsoft.Win32;
 
 namespace RecipeAppGUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Create List Recipes that will contain all recipes
+        //Note the recipe class is in Jose_ST10376126_PROG6221_POE.Class
         List<Recipe> recipes = new List<Recipe>();
-        //-------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        //It makes the Interface run with all its elements
         public MainWindow()
         {
             InitializeComponent();
@@ -36,8 +35,8 @@ namespace RecipeAppGUI
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
-        private void AddIngridientButton_Click(object sender, RoutedEventArgs e)
+        // Get the data from a form and create a new recipe ingridient list
+        private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
             string recipeName = RecipeNameInput.Text;
             string ingridientName = IngridientInput.Text;
@@ -62,7 +61,7 @@ namespace RecipeAppGUI
 
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Get the data from a form and create a new recipe step list
         private void AddStepButton_Click(object sender, RoutedEventArgs e)
         {
             string recipeName = RecipeNameInput.Text;
@@ -81,7 +80,7 @@ namespace RecipeAppGUI
             MessageBox.Show(descriptionDetails, "Description Details");
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        //Add the recipe name and quantity of steps to a combo box item
         private void addRecipeNameToComboBox(string name)
         {
             List<double> listQuantityOfStepNumeber = new List<double>();
@@ -133,8 +132,8 @@ namespace RecipeAppGUI
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //--- Neeed update
-        private void SearchRecipe_IngridientName_Button_Click(object sender, RoutedEventArgs e)
+        //Get a field input filter and return a recipe 
+        private void SearchRecipe_IngredientName_Button_Click(object sender, RoutedEventArgs e)
         {
             string ingridientName = RecipeNameSearch.Text;
             foreach (var recipe in recipes)
@@ -156,7 +155,7 @@ namespace RecipeAppGUI
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //------ Need update
+        // Get a field input filter and return a recipe 
         private void SearchRecipe_Calories_Button_Click(object sender, RoutedEventArgs e)
         {
             double calories = Convert.ToDouble(CaloriesSearch.Text);
@@ -179,7 +178,7 @@ namespace RecipeAppGUI
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //
+        //Get a field input filter and return a recipe 
         private void SearchRecipe_FoodGroup_Button_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem)FoodGroupSearch.SelectedItem;
@@ -208,7 +207,7 @@ namespace RecipeAppGUI
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Based on item selected on combo box display recipe ingredients
         private void DisplayIngridients(Recipe recipe)
         {
             IngridientsPanel.Children.Clear();
@@ -228,7 +227,7 @@ namespace RecipeAppGUI
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        //Based on item selected on combo box display recipe steps
         private void DisplaySteps(Recipe recipe)
         {
             StepsPanel.Children.Clear();
@@ -261,7 +260,7 @@ namespace RecipeAppGUI
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Display a recipe step description
         private void showDescriptionButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -274,14 +273,14 @@ namespace RecipeAppGUI
         //.................................. Operations OR Methods that made other methods work.........................................................................................//
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        //Extract recipe name from combo box item
         private string ExtractRecipeName(string comboBoxItem)
         {
             string[] parts = comboBoxItem.Split(new[] { "Recipe Name: ", "Quantity of Steps: " }, StringSplitOptions.None);
             return parts.Length > 1 ? parts[1].Trim() : string.Empty;
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Check combo box item and return the selected recipe to some methods
         private void RecipeSearchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -301,22 +300,10 @@ namespace RecipeAppGUI
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Allows user to download a user manual
         private void HyperLink_Click(object sender, RoutedEventArgs e)
         {
-            string documentPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "user-guide.pdf");
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                FileName = "user-guide.pdf",
-                Filter = "PDF files (*.pdf)| *.pdf| All files (*.*)|*.*"
-            };
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                File.Copy(documentPath, saveFileDialog.FileName, true);
-                MessageBox.Show("Download complete.", "Download", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            /*
-            
+            string documentPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "user-guide.pdf");            
             if (File.Exists(documentPath))
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog
@@ -334,7 +321,7 @@ namespace RecipeAppGUI
             {
                 MessageBox.Show("Document not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-             */
+             
 
         }
 
@@ -342,7 +329,7 @@ namespace RecipeAppGUI
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        // Check if Quantity field meets criteria
         private void Quantity_CheckDoubleInput(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(QuantityInput.Text))
@@ -367,7 +354,7 @@ namespace RecipeAppGUI
 
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        //Check if Quantity field meets criteria
         private void StepNumber_CheckDoubleInput(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(StepNumberInput.Text))
@@ -394,7 +381,7 @@ namespace RecipeAppGUI
 
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        //-------------------------------------------------
+        //Check if Quantity field meets criteria
         private void Calories_CheckDoubleInput(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(CaloriesInput.Text))

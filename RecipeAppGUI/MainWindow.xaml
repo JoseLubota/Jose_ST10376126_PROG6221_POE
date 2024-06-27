@@ -91,7 +91,7 @@
 						</StackPanel>
 
 						<Border Canvas.Left="120" Canvas.Top="324" Width="150" Height="40" CornerRadius="15">
-							<Button Name="AddIngridient" Background="Crimson" Content="Add Ingridient" Foreground="White" FontWeight="Bold" Click="AddIngridientButton_Click"/>
+							<Button Name="AddIngridient" Background="Crimson" Content="Add Ingridient" Foreground="White" FontWeight="Bold" Click="AddIngredientButton_Click"/>
 						</Border>
 						<Border Canvas.Right="120" Canvas.Top="324" Width="150" Height="40" CornerRadius="15">
 							<Button Name="AddSteps" Background="Crimson" Content="Add Step" Foreground="White" FontWeight="Bold" Click="AddStepButton_Click" />
@@ -114,7 +114,7 @@
 							</Border>
 						</StackPanel>
 						<Border Canvas.Left="100" Canvas.Top="50" Width="156" Height="30" CornerRadius="15">
-							<Button Name="D" Background="Crimson" Content="Search Recipe" Foreground="White" FontWeight="Bold" Click="SearchRecipe_IngridientName_Button_Click"/>
+							<Button Name="D" Background="Crimson" Content="Search Recipe" Foreground="White" FontWeight="Bold" Click="SearchRecipe_IngredientName_Button_Click"/>
 						</Border>
 
 						<StackPanel Canvas.Left="10" Canvas.Top="100" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" >
