@@ -4,8 +4,10 @@
  * References:
  *          https://www.w3schools.blog/c-sharp-list
  *          https://www.w3schools.com/cs/cs_arrays_loop.php
- *          https://web-p-ebscohost-com.ezproxy.iielearn.ac.za/ehost/ebookviewer/ebook/bmxlYmtfXzI5MTc3MDFfX0FO0?sid=f5055d80-d4b0-4010-9877-c1a2d34945af@redis&vid=0&format=EB&lpid=lp_xlv&rid=0     
-
+ *          https://web-p-ebscohost-com.ezproxy.iielearn.ac.za/ehost/ebookviewer/ebook/bmxlYmtfXzI5MTc3MDFfX0FO0?sid=f5055d80-d4b0-4010-9877-c1a2d34945af@redis&vid=0&format=EB&lpid=lp_xlv&rid=0  
+ *          https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/walkthrough-creating-and-using-dynamic-objects
+ *          https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.checkbox?view=windowsdesktop-8.0
+ *          https://stackoverflow.com/questions/6041332/best-way-to-get-application-folder-path
  */
 using System.Text;
 using System.Windows;
