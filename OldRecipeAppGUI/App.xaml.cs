@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace RecipeGUI
+namespace RecipeAppGUI
 {
     /// <summary>
     /// Interaction logic for App.xaml

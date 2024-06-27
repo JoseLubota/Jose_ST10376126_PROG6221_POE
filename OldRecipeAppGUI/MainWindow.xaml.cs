@@ -25,16 +25,16 @@ namespace RecipeAppGUI
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //-------------------------------------------------
-        List<Recipe> recipes = new List<Recipe>();
+        List<Recipe> recipes = new List<Recipe>();  
         //-------------------------------------------------
         public MainWindow()
         {
             InitializeComponent();
         }
-
+        
         //......................................................... METHODS TO INSERT VALUES...............................................................................................//
 
-
+        
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //-------------------------------------------------
         private void AddIngridientButton_Click(object sender, RoutedEventArgs e)
@@ -70,7 +70,7 @@ namespace RecipeAppGUI
             string description = DescriptionInput.Text;
             Steps step = new Steps(recipeName, description, stepnumber);
             Recipe recipe = recipes.FirstOrDefault(r => r.recipeName == recipeName);
-            if (recipe == null)
+            if(recipe == null)
             {
                 recipe = new Recipe { recipeName = recipeName };
                 recipes.Add(recipe);
@@ -94,11 +94,11 @@ namespace RecipeAppGUI
                     {
                         listQuantityOfStepNumeber.Add(step.stepNumber);
                         quantityOfStepNumeber = listQuantityOfStepNumeber.Count;
-
+                        
                     }
                 }
 
-            }
+            } 
             string newItem = $"Recipe Name: {name} Quantity of Steps: {quantityOfStepNumeber}";
             bool itemUpdated = false;
             List<string> items = new List<string>();
@@ -128,16 +128,16 @@ namespace RecipeAppGUI
             }
 
         }
-
+        
         //................................................................ METHODS TO SEARCH AND DISPLAY....................................................................................//
-
-
+        
+        
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //--- Neeed update
         private void SearchRecipe_IngridientName_Button_Click(object sender, RoutedEventArgs e)
         {
             string ingridientName = RecipeNameSearch.Text;
-            foreach (var recipe in recipes)
+            foreach(var recipe in recipes)
             {
                 foreach (var ingridient in recipe.recipeIngridient)
                 {
@@ -146,14 +146,14 @@ namespace RecipeAppGUI
                         string message = $"Recipe Name: {ingridient.recipeName}, " +
                             $"\nIngridient: {ingridient.name}, " +
                             $"\nUnit of Measurement: {ingridient.unitOfMeasurement}, " +
-                            $"\nQuantity: {ingridient.quantity}" +
+                            $"\nQuantity: {ingridient.quantity}"+
                             $"\nCalories: {ingridient.calories}";
                         MessageBox.Show(message, "Ingridients");
                     }
                 }
+                
 
-
-            }
+            }    
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //------ Need update
@@ -162,20 +162,20 @@ namespace RecipeAppGUI
             double calories = Convert.ToDouble(CaloriesSearch.Text);
             foreach (var recipe in recipes)
             {
-                foreach (var ingridient in recipe.recipeIngridient)
+                foreach(var ingridient in recipe.recipeIngridient)
                 {
                     if (ingridient.calories <= calories)
                     {
                         string message = $"Recipe Name: {ingridient.recipeName}, " +
                             $"\nIngridient: {ingridient.name}, " +
                             $"\nUnit of Measurement: {ingridient.unitOfMeasurement}, " +
-                            $"\nQuantity: {ingridient.quantity}" +
+                            $"\nQuantity: {ingridient.quantity}"+
                             $"\nCalories: {ingridient.calories}";
                         MessageBox.Show(message, "Ingridients");
                     }
 
                 }
-
+                    
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -183,12 +183,12 @@ namespace RecipeAppGUI
         private void SearchRecipe_FoodGroup_Button_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem)FoodGroupSearch.SelectedItem;
-            if (selectedItem != null)
+            if (selectedItem != null) 
             {
                 string foodGroup = selectedItem.Content.ToString();
-                foreach (var recipe in recipes)
+                foreach(var recipe in recipes)
                 {
-                    foreach (var ingridient in recipe.recipeIngridient)
+                    foreach(var ingridient in recipe.recipeIngridient)
                     {
                         if (ingridient.foodGroup != null && ingridient.foodGroup.Equals(foodGroup))
                         {
@@ -203,8 +203,8 @@ namespace RecipeAppGUI
 
                     }
                 }
-
-            }
+     
+            }           
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -278,7 +278,7 @@ namespace RecipeAppGUI
         private string ExtractRecipeName(string comboBoxItem)
         {
             string[] parts = comboBoxItem.Split(new[] { "Recipe Name: ", "Quantity of Steps: " }, StringSplitOptions.None);
-            return parts.Length > 1 ? parts[1].Trim() : string.Empty;
+            return parts.Length > 1 ? parts[1].Trim() : string.Empty;        
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //-------------------------------------------------
@@ -364,7 +364,7 @@ namespace RecipeAppGUI
                     QuantityInput.Focus();
                 }
             }
-
+          
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //-------------------------------------------------
@@ -391,7 +391,7 @@ namespace RecipeAppGUI
                 }
 
             }
-
+            
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //-------------------------------------------------
@@ -419,7 +419,7 @@ namespace RecipeAppGUI
                 }
 
             }
-
+           
         }
     }
 }
